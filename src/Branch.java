@@ -9,11 +9,6 @@ public class Branch {
     private String name;
     private ArrayList<Customer> customerList = new ArrayList<Customer>();
 
-//    public Branch(String name) {
-//        this.name = name;
-//        this.customerList = customerList;
-//    }
-
 
     public Branch(String name) {
         this.name = name;
@@ -38,8 +33,36 @@ public class Branch {
     }
 
     public void getCustomerList() {
-        for(int i = 0; i < customerList.size(); i++){
+        for (int i = 0; i < customerList.size(); i++) {
             System.out.println(customerList.get(i).toString());
         }
     }
+
+    public void printCustomerList() {
+        for(int i = 0; i < this.customerList.size(); i++) {
+            System.out.println(customerList.get(i).getName() + " with balance of " + customerList.get(i).getCustomerBalance());
+        }
+    }
+
+    public void addCustomerTransaction(String name, double transactionAmount) {
+        if (getCustomerNumber(name) >= 0) {
+            System.out.println("Transaction in the amount of: " + transactionAmount + " successfully added.");
+            int accountNumber = getCustomerNumber(name);
+            Customer customer = customerList.get(accountNumber);
+            customer.addTransaction(transactionAmount);
+        } else {
+            System.out.println("Could not find customer.");
+        }
+    }
+
+    public int getCustomerNumber(String name) {
+        for (int i = 0; i < this.customerList.size(); i++) {
+            Customer customer = customerList.get(i);
+            if (customer.getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }

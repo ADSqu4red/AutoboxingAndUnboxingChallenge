@@ -12,11 +12,12 @@ public class Main {
         tim.addTransaction(.05);
         tim.addTransaction(100.00);
         tim.addTransaction(-65.1);
-        System.out.println(tim.getTransactions());
-        System.out.println(tim.getCustomerBalance());
 
         Branch newBranch = new Branch("Toronto Domonion");
         newBranch.addNewCustomer("Roger", 100000.00);
-        newBranch.getCustomerList();
+        newBranch.addNewCustomer("Paul", 1234.44);
+        newBranch.addNewCustomer("Tim", 767676.22);
+
+        newBranch.printCustomerList();
     }
 }
